@@ -35,9 +35,9 @@
       }
     }, false);
 
-    document.addEventListener('keypress', function (e) {
-      if (e.key === 'f')
-        takePictureAndClassify();
+    const webcamClassifyButton = document.getElementById('webcam-classify-btn');
+    webcamClassifyButton.addEventListener('click', function (e) {
+      takePictureAndClassify();
     });
   }
 
@@ -54,7 +54,7 @@
       fd.append("file", shotFile);
       classifyFromCam(fd);
     } else {
-      clearphoto();
+      alert('Video is not available.');
     }
   }
 
