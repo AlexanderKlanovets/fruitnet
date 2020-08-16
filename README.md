@@ -29,6 +29,7 @@ To install and run locally in a production mode:
 
 ```bash
 git clone https://github.com/AlexanderKlanovets/fruitnet
+cd fruitnet
 pip install -r requirements.txt
 python app.py
 ```
