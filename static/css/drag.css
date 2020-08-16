@@ -1,0 +1,55 @@
+#drop-area {
+  width: 90%;
+  border: 2px dashed #999;
+  border-radius: 20px;
+  margin: 20px auto;
+  padding: 50px 20px;
+  color: #999;
+  background-color: #fff;
+}
+
+#drop-area.highlight {
+  border: 3px dashed #000;
+}
+
+#drop-area p {
+  margin-top: 0;
+  font-size: 1rem;
+}
+
+.my-form {
+  margin-bottom: 10px;
+}
+
+#gallery {
+  margin-top: 15px;
+}
+
+#gallery img {
+  width: 40%;
+  height: auto;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.button {
+  display: inline-block;
+  padding: 10px;
+  cursor: pointer;
+  border: 1px solid #999;
+  font-size: 1rem;
+}
+
+.button:hover {
+  background: #ddd;
+}
+
+#fileElem {
+  display: none;
+}
+
+#classify-btn {
+  display: none;
+  margin: auto;
+  margin-top: 15px;
+  font-size: 1rem;
+}

@@ -1,0 +1,103 @@
+* {
+  box-sizing: border-box;
+  font-family: "Major Mono Display", "Segoe UI", Tahoma, Geneva, Verdana,
+    sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  min-width: 400px;
+}
+
+#video {
+  border: 2px dashed #999;
+  width: 90%;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+#canvas {
+  display: none;
+}
+
+#controls {
+  position: absolute;
+  text-align: center;
+  width: 40%;
+  margin: 100px 30%;
+  padding: 20px 2.5%;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+}
+
+select, button {
+  background-color: rgba(255, 255, 255, 0.85);
+  border: 1px solid black;
+  padding: 10px;
+}
+
+select, option {
+  font-size: 1rem;
+  width: 90%;
+}
+
+#webcam {
+  display: none;
+}
+
+#webcam p, #result p {
+  width: 90%;
+  margin-left: 5%;
+}
+
+#result {
+  display: none;
+}
+
+#result p {
+  line-height: 1.5;
+}
+
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+@media only screen and (max-width: 1024px) {
+  #controls {
+    width: 60%;
+    margin: 100px 20%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+
+  #controls {
+    width: 70%;
+    margin: 100px 15%;
+  }
+
+  select {
+    font-size: 0.9rem;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  body {
+    font-size: 12px;
+  }
+
+  #controls {
+    width: 80%;
+    margin: 100px 10%;
+  }
+}

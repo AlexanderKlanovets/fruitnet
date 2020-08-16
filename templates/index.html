@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FruitNET Classification Demo</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Major+Mono+Display">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" type="text/css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/drag.css') }}" type="text/css">
+</head>
+
+<body>
+  <section id="controls">
+    <h1><span>Introducing FruitNet</span></h1>
+    <select name="options" id="options" onchange="selectOption()">
+      <option disabled selected>Select an option to classify fruits</option>
+      <option value="drag-n-drop">Drag and drop a fruit picture</option>
+      <option value="webcam">Use your webcam to scan fruits</option>
+    </select>
+
+    <!-- Drag-n-Drop option -->
+    <div id="drag-n-drop">
+      <div id="drop-area">
+        <form class="my-form" onsubmit="classify(event)">
+          <p>
+            Upload fruit image with the file dialog or by 
+            dragging and dropping images onto the dashed region
+          </p>
+          <input 
+            type="file" name="file" id="fileElem" 
+            accept=".jpg, .jpeg, .png" onchange="handleFiles(this.files)"
+          >
+          <label class="button" for="fileElem">Select an image</label>
+          <div id="gallery"></div>
+          <button class="button" id="classify-btn" type="submit">
+            Classify
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Webcamera option -->
+    <div id="webcam">
+      <canvas id="canvas"></canvas>
+      <video id="video">Video stream not available.</video>
+      <p>Press F key to perform classification</p>
+    </div>
+
+    <!-- Result output section -->
+    <div id="result">
+      <h3>Result:</h3>
+      <p id="result-msg"></p>
+    </div>
+  </section>
+
+  <div id="particles-js"></div>
+</body>
+
+<script src="{{ url_for('static', filename='js/particles/particles.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/particles/particlesConfig.js') }}"></script>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script src="{{ url_for('static', filename='js/dragDrop.js') }}"></script>
+<script src="{{ url_for('static', filename='js/capture.js') }}"></script>
+<script src="{{ url_for('static', filename='js/utils.js') }}"></script>
+
+</html>
