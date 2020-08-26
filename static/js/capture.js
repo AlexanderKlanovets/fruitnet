@@ -1,62 +1,63 @@
-{
-  let width = 320;
-  let height = 0;
-  let streaming = false;
+const videoWidth = 320;
+let videoHeight = 0;
+let streaming = false;
 
-  let video = null;
-  let canvas = null;
+const video = document.getElementById('video');
+const canvas = document.getElementById('canvas');
 
-  function startUp() {
-    video = document.getElementById('video');
-    canvas = document.getElementById('canvas');
-
-    navigator.mediaDevices.getUserMedia({ video: true, audio: false })
-      .then(function (stream) {
-        video.srcObject = stream;
-        video.play();
-      })
-      .catch(function (err) {
-        console.log('An error occurred: ' + err);
-      });
-
-    video.addEventListener('canplay', function (e) {
-      if (!streaming) {
-        height = video.videoHeight / (video.videoWidth / width);
-
-        if (isNaN(height)) {
-          height = width / (4 / 3);
-        }
-
-        video.setAttribute('width', width);
-        video.setAttribute('height', height);
-        canvas.setAttribute('width', width);
-        canvas.setAttribute('height', height);
-        streaming = true;
-      }
-    }, false);
-
-    const webcamClassifyButton = document.getElementById('webcam-classify-btn');
-    webcamClassifyButton.addEventListener('click', function (e) {
-      takePictureAndClassify();
+async function webcamSetUp() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ 
+      video: true, audio: false 
     });
+    video.srcObject = stream;
+    video.play();
+  } catch(e) {
+    console.log('An error has ocurred: ', e.message);
   }
-
-  function takePictureAndClassify() {
-    const context = canvas.getContext('2d');
-    if (width && height) {
-      canvas.width = width;
-      canvas.height = height;
-      context.drawImage(video, 0, 0, width, height);
-
-      const data = canvas.toDataURL('image/jpeg', 1);
-      const shotFile = dataURItoFile(data, 'shot.jpg');
-      const fd = new FormData();
-      fd.append("file", shotFile);
-      classifyFromCam(fd);
-    } else {
-      alert('Video is not available.');
-    }
-  }
-
-  window.addEventListener('load', startUp, false);
 }
+
+function configureVideo() {
+  if (!streaming) {
+    videoHeight = video.videoHeight / (video.videoWidth / videoWidth);
+
+    if (isNaN(videoHeight)) {
+      videoHeight = videoWidth / (4 / 3);
+    }
+
+    video.setAttribute('width', videoWidth);
+    video.setAttribute('height', videoHeight);
+    canvas.setAttribute('width', videoWidth);
+    canvas.setAttribute('height', videoHeight);
+    streaming = true;
+  }
+}
+
+function startUp() {
+  webcamSetUp();
+  video.addEventListener('canplay', configureVideo, false);
+
+  const webcamClassifyButton = document.getElementById('webcam-classify-btn');
+  webcamClassifyButton.addEventListener('click', function (e) {
+    takePictureAndClassify();
+  });
+}
+
+function takePictureAndClassify() {
+  const context = canvas.getContext('2d');
+  if (videoWidth && videoHeight) {
+    canvas.width = videoWidth;
+    canvas.height = videoHeight;
+    context.drawImage(video, 0, 0, videoWidth, videoHeight);
+
+    const data = canvas.toDataURL('image/jpeg', 1);
+    const shotFile = dataURItoFile(data, 'shot.jpg');
+    const fd = new FormData();
+    fd.append("file", shotFile);
+    classifyFromCam(fd);
+  } else {
+    alert('Video is not available.');
+  }
+}
+
+window.addEventListener('load', startUp, false);

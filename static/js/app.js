@@ -2,21 +2,11 @@ const SERVER_IP = 'http://localhost:5000';
 
 particlesJS("particles-js", particlesConfig);
 
-let selectElement = null;
-let dragDropElement = null;
-let webcamElement = null;
-let resultElement = null;
-let resultMessageElement = null;
-
-function initApp() {
-  selectElement = document.getElementById('options');
-  dragDropElement = document.getElementById('drag-n-drop');
-  webcamElement = document.getElementById('webcam');
-  resultElement = document.getElementById('result');
-  resultMessageElement = document.getElementById('result-msg');
-}
-
-window.addEventListener('load', initApp, false);
+const selectElement = document.getElementById('options');
+const dragDropElement = document.getElementById('drag-n-drop');
+const webcamElement = document.getElementById('webcam');
+const resultElement = document.getElementById('result');
+const resultMessageElement = document.getElementById('result-msg');
 
 function selectOption() {
   resultElement.style.display = 'none';
