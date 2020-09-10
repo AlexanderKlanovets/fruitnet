@@ -33,3 +33,11 @@ cd fruitnet
 pip install -r requirements.txt
 python app.py
 ```
+
+Another way is to run the app with Docker:
+```bash
+git clone https://github.com/AlexanderKlanovets/fruitnet
+cd fruitnet
+sudo docker build -t <image_name> .
+sudo docker run -p 5000:5000 <image_name>
+```
