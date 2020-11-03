@@ -4,7 +4,7 @@
 
 FruitNet is a web application, implemented with Python (Flask framework), which uses a convolutional neural network on the back-end to perform fruit classification. The system is able to distinguish 6 classes of fruits: fresh/rotten apples, fresh/rotten oranges and fresh/rotten bananas. The user is able to interact with the app by uploading images or by showing the fruits to the web-camera. The app uses Web Speech API to make the experience more interactive and fun.
 
-*Warning!* As there's no fallback class like "a non-fruit object", please don't take it personally when the model classifies the photo of you as a rotten banana :sweat_smile: (this also applies to any object, that doesn't belong to the mentioned classed).
+*Warning!* As there's no fallback class like "a non-fruit object", please don't take it personally when the model classifies the photo of you as a rotten banana :sweat_smile: (this also applies to any object, that doesn't belong to the mentioned classes).
 
 **The application is available at:** https://fruitnet.herokuapp.com
 
@@ -14,7 +14,7 @@ For this project, the following tools were used:
 - [Tensorflow 2](https://www.tensorflow.org/install) for building and training the model;
 - [Numpy](https://numpy.org/) for working with arrays;
 - [Matplotlib](https://matplotlib.org/) for visualizing the data;
-- [Flask](https://flask.palletsprojects.com/en/1.1.x/) for implementing server side;
+- [Flask](https://flask.palletsprojects.com/en/1.1.x/) for implementing the server side;
 - HTML5, CSS3, JavaScript (with Web Speech API and [particles.js](https://vincentgarreau.com/particles.js/)) on the front-end.
 
 ### Dataset for training
